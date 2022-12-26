@@ -13,7 +13,7 @@ export const Expenses = (props) => {
   };
   return (
     <div>
-      <ExpensesFilter yearUp={upLiftYear} />
+      <ExpensesFilter selected={selectedYear} yearUp={upLiftYear} />
       <Card className="expenses">
         {props.items.map((items) => {
           return (
