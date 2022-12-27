@@ -19,7 +19,7 @@ export const ExpenseForm = ({ onSaveExpenseData, switchView }) => {
     e.preventDefault();
     const expensData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate)
     };
     onSaveExpenseData(expensData);
