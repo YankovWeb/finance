@@ -8,14 +8,18 @@ import { ExpensesFilter } from './ExpensesFilter';
 export const Expenses = (props) => {
   const [selectedYear, setSelectedYear] = useState(null);
 
-  const upLiftYear = (year) => {
+  const fiteredHandler = (year) => {
     setSelectedYear(year);
   };
+
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === selectedYear;
+  });
   return (
     <div>
-      <ExpensesFilter selected={selectedYear} yearUp={upLiftYear} />
       <Card className="expenses">
-        {props.items.map((items) => {
+        <ExpensesFilter selected={selectedYear} yearUp={fiteredHandler} />
+        {filteredExpenses.map((items) => {
           return (
             <ExpenseItem
               key={items.id}
