@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NewExpense.css';
 import { ExpenseForm } from './ExpenseForm';
 
@@ -11,9 +11,22 @@ export const NewExpense = ({ onExpenseCreation }) => {
     onExpenseCreation(expenseData);
   };
 
+  const [formOpen, setFormOpen] = useState(false);
+
+  const switchButton = () => {
+    setFormOpen(!formOpen);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {formOpen ? (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          switchView={switchButton}
+        />
+      ) : (
+        <button onClick={switchButton}>Add Expense</button>
+      )}
     </div>
   );
 };

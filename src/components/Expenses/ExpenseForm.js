@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
-export const ExpenseForm = ({ onSaveExpenseData }) => {
+export const ExpenseForm = ({ onSaveExpenseData, switchView }) => {
   const [enteredTitle, setTitle] = useState('');
   const [enteredAmount, setAmount] = useState('');
   const [enteredDate, setDate] = useState('');
@@ -26,6 +26,7 @@ export const ExpenseForm = ({ onSaveExpenseData }) => {
     setTitle('');
     setAmount('');
     setDate('');
+    switchView();
   };
 
   return (
@@ -62,7 +63,10 @@ export const ExpenseForm = ({ onSaveExpenseData }) => {
         </div>
       </div>
       <div className="new-expense__action"></div>
-      <button type="submit">Add Epxense</button>
+      <button type="click" onClick={switchView}>
+        Cancel
+      </button>
+      <button type="submit">Add Expense</button>
     </form>
   );
 };
